@@ -5,8 +5,8 @@ import {
   ArrowRight,
   ArrowUpRight,
   ChevronDown,
-  Clock3,
   Flame,
+  Mail,
   MapPin,
   Menu,
   MoveUpRight,
@@ -55,7 +55,7 @@ function Navbar() {
         <Logo />
         <nav className={`nav-links ${open ? "nav-links--open" : ""}`}>
           {navItems.map((item) => <a key={item.href} href={item.href} onClick={() => setOpen(false)}>{item.label}</a>)}
-          <a className="nav-cta" href="#visit" onClick={() => setOpen(false)}>Find us <MoveUpRight size={15} /></a>
+          <a className="nav-cta" href={restaurant.contact.phoneLink} onClick={() => setOpen(false)}>Call us <Phone size={15} /></a>
         </nav>
         <button className="menu-toggle" aria-label={open ? "Close menu" : "Open menu"} onClick={() => setOpen(!open)}>
           {open ? <X /> : <Menu />}
@@ -149,8 +149,12 @@ function VisitUs() {
         <div><p className="eyebrow eyebrow--light"><span /> Come say hello</p><h2>Make room<br /><em>for good food.</em></h2><p className="visit-lead">Your next favorite table is waiting in the hills of Baguio.</p></div>
         <div className="visit-details">
           <div className="detail"><MapPin /><div><small>Find us at</small><p>{restaurant.address}</p></div></div>
-          <div className="detail"><Clock3 /><div><small>Hours</small><p className="placeholder">Hours to be confirmed</p></div></div>
-          <div className="detail"><Phone /><div><small>Contact</small><p className="placeholder">Contact details to be confirmed</p></div></div>
+          <a className="detail contact-detail" href={restaurant.contact.phoneLink}><Phone /><div><small>Contact</small><p>{restaurant.contact.phone}</p><span>Call or message us</span></div></a>
+          <a className="detail contact-detail" href={restaurant.contact.emailLink}><Mail /><div><small>Email</small><p>{restaurant.contact.email}</p><span>Send us an email</span></div></a>
+          <div className="visit-actions">
+            <a className="button button--gold" href={restaurant.contact.phoneLink}>Call us <Phone size={16} /></a>
+            <a className="button button--outline" href={restaurant.contact.emailLink}>Email us <Mail size={16} /></a>
+          </div>
           <a className="button button--cream" href={restaurant.mapUrl} target="_blank" rel="noreferrer">Open in Google Maps <MoveUpRight size={16} /></a>
         </div>
       </div>
@@ -159,7 +163,7 @@ function VisitUs() {
 }
 
 function Footer() {
-  return <footer className="footer"><div className="container footer-top"><Logo light /><p>{restaurant.description}</p><div className="footer-social"><span className="footer-note">Social links<br />to be confirmed</span></div></div><div className="container footer-bottom"><span>© {new Date().getFullYear()} Zambalii Grill</span><span>Baguio, Benguet</span><a href="#home">Back to top <ChevronDown size={15} /></a></div></footer>;
+  return <footer className="footer"><div className="container footer-top"><Logo light /><p>{restaurant.description}</p><div className="footer-contact"><a href={restaurant.contact.phoneLink}>{restaurant.contact.phone}</a><a href={restaurant.contact.emailLink}>{restaurant.contact.email}</a></div></div><div className="container footer-bottom"><span>© {new Date().getFullYear()} Zambalii Grill</span><span>Baguio, Benguet</span><a href="#home">Back to top <ChevronDown size={15} /></a></div></footer>;
 }
 
 function App() {

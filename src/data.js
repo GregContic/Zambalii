@@ -6,7 +6,12 @@ export const restaurant = {
     "A warm table in Baguio for smoky grilled favorites, Filipino comfort food, and time well spent.",
   address: "Tiptop Ambuklao Road, Baguio, Benguet, Philippines",
   mapUrl: "https://www.google.com/maps/search/?api=1&query=16.4306997,120.6222734",
-  phone: null,
+  contact: {
+    phone: "0985 909 2146",
+    phoneLink: "tel:+639859092146",
+    email: "grillzambalii@gmail.com",
+    emailLink: "mailto:grillzambalii@gmail.com",
+  },
   facebook: null,
 };
 
